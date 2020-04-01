@@ -7,8 +7,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="793.700787402"
-   height="1122.51968504"
+   width="297mm"
+   height="210mm"
    version="1.1"
    id="svg72"
    sodipodi:docname="lasercut_desktop_tafelblad boven.svg"
@@ -40,11 +40,12 @@
      showgrid="false"
      inkscape:zoom="0.84096523"
      inkscape:cx="1109.7127"
-     inkscape:cy="773.60944"
+     inkscape:cy="1058.9958"
      inkscape:window-x="1358"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g70" />
+     inkscape:current-layer="g70"
+     units="mm" />
   <desc
      id="desc2">C:\Users\Alle\AppData\Local\Temp\lasercut_desktop_tafelblad boven.dxf - scale = 1.000000, origin = (0.000000, 0.000000), method = manual</desc>
   <defs
@@ -52,13 +53,14 @@
     <marker
        id="DistanceX"
        orient="auto"
-       refX="0.0"
-       refY="0.0"
+       refX="0"
+       refY="0"
        style="overflow:visible">
       <path
-         d="M 3,-3 L -3,3 M 0,-5 L  0,5"
-         style="stroke:#000000; stroke-width:0.5"
-         id="path4" />
+         d="M 3,-3 -3,3 M 0,-5 V 5"
+         style="stroke:#000000;stroke-width:0.5"
+         id="path4"
+         inkscape:connector-curvature="0" />
     </marker>
     <pattern
        height="8"
@@ -94,19 +96,23 @@
   <g
      inkscape:groupmode="layer"
      inkscape:label="0"
-     id="g18" />
+     id="g18"
+     transform="translate(0,-328.81887)" />
   <g
      inkscape:groupmode="layer"
      inkscape:label="onderplaat"
-     id="g20" />
+     id="g20"
+     transform="translate(0,-328.81887)" />
   <g
      inkscape:groupmode="layer"
      inkscape:label="Laag_2"
-     id="g22" />
+     id="g22"
+     transform="translate(0,-328.81887)" />
   <g
      inkscape:groupmode="layer"
      inkscape:label="bovenplaat"
-     id="g70">
+     id="g70"
+     transform="translate(0,-328.81887)">
     <path
        d="m 374.90544,-71.083654 c 2e-5,3.770824 -3.05319,6.829618 -6.82401,6.836485"
        style="fill:none;stroke:#0000ff"
@@ -277,7 +283,7 @@
     </g>
     <g
        id="g4688"
-       transform="translate(2.1020355)">
+       transform="translate(-108.48518,-21.403976)">
       <circle
          r="9.2011585"
          cy="-57.161476"
@@ -299,7 +305,9 @@
     </g>
     <g
        id="g4688-4"
-       transform="rotate(-90,1292.5805,90.59579)">
+       transform="translate(20.673453,3.4521111)"
+       inkscape:transform-center-x="155.77338"
+       inkscape:transform-center-y="99.885205">
       <circle
          r="9.2011585"
          cy="-57.161476"
@@ -354,22 +362,22 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-       x="1296.7788"
-       y="-79.807877"
+       x="1179.0569"
+       y="-100.02274"
        id="text4724-0"><tspan
          sodipodi:role="line"
          id="tspan4751"
-         x="1296.7788"
-         y="-79.807877">Odykaart</tspan></text>
+         x="1179.0569"
+         y="-100.02274">Odykaart</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-       x="1010.9161"
-       y="41.017044"
+       x="1312.95"
+       y="-75.515717"
        id="text4724-0-0"><tspan
          sodipodi:role="line"
          id="tspan4771"
-         x="1010.9161"
-         y="41.017044">Odyletter</tspan></text>
+         x="1312.95"
+         y="-75.515717">Odyletter</tspan></text>
   </g>
 </svg>
