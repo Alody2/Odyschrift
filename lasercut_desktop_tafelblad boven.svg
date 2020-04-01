@@ -21,7 +21,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -34,14 +34,14 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="1057"
+     inkscape:window-width="1366"
+     inkscape:window-height="745"
      id="namedview74"
      showgrid="false"
      inkscape:zoom="0.84096523"
-     inkscape:cx="1109.7127"
-     inkscape:cy="1058.9958"
-     inkscape:window-x="1358"
+     inkscape:cx="1553.0814"
+     inkscape:cy="1016.1878"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="g70"
@@ -305,7 +305,7 @@
     </g>
     <g
        id="g4688-4"
-       transform="translate(20.673453,3.4521111)"
+       transform="translate(-108.48518,3.4521111)"
        inkscape:transform-center-x="155.77338"
        inkscape:transform-center-y="99.885205">
       <circle
@@ -337,47 +337,25 @@
            height="114.15454"
            x="1212.892"
            y="190.25757" /></flowRegion><flowPara
-         id="flowPara4720"></flowPara></flowRoot>    <text
+         id="flowPara4720" /></flowRoot>    <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
        x="1176.0295"
        y="171.2318"
        id="text4724"><tspan
          sodipodi:role="line"
-         id="tspan4773"
+         id="tspan1451"
          x="1176.0295"
-         y="171.2318">wachttijd</tspan><tspan
+         y="171.2318">vult wachttijden </tspan><tspan
          sodipodi:role="line"
-         id="tspan4775"
+         id="tspan1453"
          x="1176.0295"
-         y="201.2318">kleur van te kiezen richting</tspan><tspan
+         y="201.2318">lichtjes hebben de kleur van Odyteken die in behandeling is. </tspan><tspan
          sodipodi:role="line"
-         id="tspan4777"
+         id="tspan1455"
          x="1176.0295"
-         y="231.2318">fase (aantal staan stil)</tspan><tspan
+         y="231.2318">een geeft met een kleur aan in welke fase het schrijven is.</tspan><tspan
          sodipodi:role="line"
-         id="tspan4779"
-         x="1176.0295"
-         y="261.23181">van rechts naar links of andersom</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-       x="1179.0569"
-       y="-100.02274"
-       id="text4724-0"><tspan
-         sodipodi:role="line"
-         id="tspan4751"
-         x="1179.0569"
-         y="-100.02274">Odykaart</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-       x="1312.95"
-       y="-75.515717"
-       id="text4724-0-0"><tspan
-         sodipodi:role="line"
-         id="tspan4771"
-         x="1312.95"
-         y="-75.515717">Odyletter</tspan></text>
+         id="tspan1457">spelen met aan en uit gaan van rechts naar links of andersom</tspan></text>
   </g>
 </svg>
