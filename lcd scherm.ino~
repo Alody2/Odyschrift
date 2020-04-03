@@ -7,6 +7,14 @@ In this part a lcd-screen translates Odywords in text.
  
 
 //variabelen om het printen van de tekst op het lcd-scherm te regelen
+String tekst;			//catches the text to print to the lcd-screen
+byte textLen;                           // Number of visible characters in the text
+int cursorKolom;		//waar op de regel start de tekst
+int cursorRij;			//op welke regel start de tekst
+int wachten;  			//als 1 neerzetten tekst in eerste loop, wordt 2 in de eerste loop. Als 3 wordt de tekst in elke loop aangepast. 
+int wachten2 = false;  			//schakelaar om te zetten in eerste loop. 
+int keuzestand = 0;			//zet een listener aan na de eerste loop in een keuze stand
+boolean startModus;		//waar zolang een welkomst tekst wordt getoond
 //---------------------------------------------------------------------------
 void lcd_print() {// function to regulate printing to the lcd-screen   
 	switch (wachten){
