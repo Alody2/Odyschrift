@@ -73,10 +73,10 @@ String strActie = "instelling_1";*/
 /*int odyModule = 64;
 String strActie = "schakel";*/
 
-int odyModule = 2;			//variable containing the number of a module
-String strActie = "schrijven  ";
-/*int odyModule = 1;			//variable containing the number of a module
-String strActie = "4 op 1 ry";*/
+/*int odyModule = 2;			//variable containing the number of a module
+String strActie = "schrijven  ";*/
+int odyModule = 1;			//variable containing the number of a module
+String strActie = "4 op 1 ry";
 
 
 int cursorTekst = 0;	
@@ -444,12 +444,12 @@ void regeltModule()
 		{ 
 			case 3: //dom
 				//dobbelsteenWerpen 1 tot en met 3
-				dobbelsteen(0);
+			//	dobbelsteen(0);
 				zet_voltooid();
 			break;
 			case 4: //dof
 				//dobbelsteenWerpen 4 tot en met 6
-				dobbelsteen(9);
+			//	dobbelsteen(9);
 				zet_voltooid();
 			break;
 			case 5: //ded
@@ -458,7 +458,7 @@ void regeltModule()
 					{
 						wacht_op_input = true;
 					//	lcd_leeg();
-						worp(1,0);
+						//worp(1,0);
 					}
 					else if (wacht_op_input == false && Odywoord == "F")
 					{
@@ -467,7 +467,7 @@ void regeltModule()
 					else if (wacht_op_input == true)
 					{
 						wacht_op_input = false;
-						plaatsen4(5,0);
+						//plaatsen4(5,0);
 					}
 				zet_voltooid();
 			break;
@@ -477,7 +477,7 @@ void regeltModule()
 					{
 						wacht_op_input = true;
 					//	lcd_leeg();
-						worp(2,0);
+						//worp(2,0);
 					}
 					else if (wacht_op_input == false && Odywoord == "F")
 					{
@@ -486,7 +486,7 @@ void regeltModule()
 					else if (wacht_op_input == true)
 					{
 						wacht_op_input = false;
-						plaatsen4(9,0);
+						//plaatsen4(9,0);
 					}
 				zet_voltooid();
 			break;
@@ -514,7 +514,8 @@ void regeltModule()
 					/*Serial1.print (Odywoord);
 					Serial2.print (Odywoord); */
 					tekst = strActie ; cursorKolom = 0 ;  eerste_schrijf_loop = false;  cursorRij =2;  lcd_print();    
-					tekst = "chip " + Odywoord + " valt"; cursorKolom = 0 ;  eerste_schrijf_loop = false;  cursorRij =3;  lcd_print();  
+					tekst = "chip " + Odywoord + " valt"; cursorKolom = 0 ;  eerste_schrijf_loop = false;  cursorRij =3;  lcd_print(); 
+vierOpRij(); 
 					zet_voltooid();
 				break;
 			case 7://dem

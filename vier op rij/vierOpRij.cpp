@@ -1,68 +1,16 @@
 /* 
-This sketch is part of the Odyschrift project. It has been originally created by Alle v Meeteren and modified by Jurre Ongering on 
-15 March 2020
-This project enables physically handicapped people to play a game of "connect-four". A joystick is used as a controller. 
+This is the cpp file in the library vvierOpRij. It is part of the Odyschrift project. It has been originally created by Alle v Meeteren, modified by Jurre Ongering on 
+15 March 2020 amd conversed to a library on 4 avril 2020 by Alle
+This module of the project enables physically handicapped people to play a game of "connect-four". A joystick is used as a controller. 
 The joystick has 8 contacts.
 
  * The joystick can activate a single contact (4 directions)  or 2 contacts (4 directions between the other 4 directions) at a time.
  * In the neutral state none of these is active. In our implementation the joystick has to return to that neutral state, before the next direction can be chosen.
  * We alternate between the 2 groups, so there is a variable to indicate which group is the active group. 
 
-The project also includes the LiquidCrystal Library Library originally added 18 Apr 2008 by David A. Mellis // library modified 5 Jul 2009 by Limor Fried (http://www.ladyada.net) // 
-example added 9 Jul 2009 by Tom Igoe // modified 22 Nov 2010 by Tom Igoe // modified 7 Nov 2016 by Arturo Guadalupi/ More info:
-http://www.arduino.cc/en/Tutorial/LiquidCrystalHelloWorld 
-
-27-6-2019: pinnumbers to connect to the board  , added action for all combinations of 2 Odyletters.
- */
-#include <LiquidCrystal_I2C.h> // include the library code
-// initialize the library by associating any needed LCD interface pin
-// with the arduino pin number it is connected to
-LiquidCrystal_I2C lcd (0x27, 20, 4);
-// Hang de LCD aan de SDA en SCL pint op de arduino Mega!
- 
-// NEVER define any of these pins to attach to the 1 (tx) pin on Arduino because it will totally screw your sketch!! And send you on an hour of debugging
-// Make sure these are corrected in the right order! Taking some time to do it properly might save you a lot of work later.
-//The pins for the joystick are:
-int dirLeft = 47; // A
-int dirRight = 49; // E
-int dirUp = 53; // O
-int dirDown = 51; //I
-
-//int bt =9;
-//int bt = 10;
-//int bt = 11;
-
-int mDO = 38;
-int mDE = 40;
-int mDI = 42;
-int mDA = 44;
-int mRO = 46;
-int mRE = 48;
-int mRI = 50;
-int mRA = 52;
-
-int led_red = 12;             //rood
-int led_green = 13;           //groen
-
-boolean Firstgroup = true;    // This Boolean is used for zooming in on the group DRMF, or the group AOEI
-String Odywoord;              // This is the Odyword which is a composition of one or more Odytekens
-String Odyteken;              // This is the Odyteken which constructs the Odywoord
-String tekst;			            //catches the text to print to the lcd-screen
-int lengteTekst;			        //lengte van tekst, om de tekst af te kunnen rollen
-int cursorKolom;		          //waar op de regel start de tekst
-int cursorRij;			          //op welke regel start de tekst
-boolean laatstaan;		        //waar als de tekst niet wordt weggepoetst na de pauze
-int wachten;  			          //bepaalt of en hoe lang gewacht wordt op de volgende tekst
-int keuzestand = 0;			      //zet een listener aan na de eerste loop in een keuze stand
-boolean afrollen;		          // waar als de tekst afgerold moet worden
-boolean FirstLetterDefined = false; // Variable distinguishing between first loop when looking for a first word, or second loop looking for second word
-int holdtime = 500;          // This sets how long the user have to hold the stick in a direction before selection is confirmed
-
-int startholdtime;            // This is a variable needed for keeping track of selection time
-int endholdtime;              // This is a variable needed for keeping track of selection time
-int pausetime = 100;         // Sets the time sketch pauzes after confirmation of letters
-int turntime = 50;           // Wait for a moment after selecting a motor and motor old time
-//---------------------------------------------------------------------------
+We use an Arduino Mega */
+#include "Arduino.h"
+#include "Morse.h"
 
 void setup() {
 
