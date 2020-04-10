@@ -10,19 +10,20 @@ The joystick has 8 contacts.
 
 We use an Arduino Mega
 */
-#ifndef Morse_h
-#define Morse_h
-class vierOpRij
+#ifndef OdyVierOpRij_h
+#define OdyVierOpRij_h
+class OdyVierOpRij
 { 
 public:
-int mDO;
-int mDE;
-int mDI;
-int mDA;
-int mRO;
-int mRE;
-int mRI;
-int mRA;
+	int mDO;
+	int mDE;
+	int mDI;
+	int mDA;
+	int mRO;
+	int mRE;
+	int mRI;
+	int mRA;
+	void action(char Odywoord); 
 private:
 }
 #endif

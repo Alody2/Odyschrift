@@ -1,0 +1,24 @@
+
+/*
+  Ody.h - Library Odyschrift. A system to select an item in a collection of items with a penstroke or an Arcade joystick.
+  Created by A. van Meeteren, 2019.
+  Released into the public domain.
+*/
+#ifndef Ody_h
+#define Ody_h
+
+#include "Arduino.h"
+
+class Ody_lezen
+{
+  public:
+	Ody_lezen(int rxPin, int txPin);
+	String lezen();
+	void begin();
+  private:
+	void _recvOneChar(); 
+	char _showNewData(); 
+	int _pin;
+};
+
+#endif

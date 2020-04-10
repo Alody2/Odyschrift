@@ -1,0 +1,56 @@
+/*
+  Ody.cpp - Library Odyschrift. A system to select an item in a collection of items with a penstroke or an Arcade joystick.
+  Created by A. van Meeteren, 2019.
+  Released into the public domain.
+*/
+#include "Arduino.h"
+#include "Ody.h"
+#include <SoftwareSerial.h>
+	const int txPin = 9;
+	const int rxPin = 10;
+	SoftwareSerial mySerial(rxPin, txPin); // RX, TX*/
+	char _receivedChar;
+	bool _newData; 
+
+Ody::Ody(int rxPin, int txPin)
+{
+}
+
+void Ody::begin()
+{
+	pinMode(rxPin, INPUT);
+	pinMode(txPin, OUTPUT);
+	mySerial.begin (9600);
+	
+}
+
+String Ody::lezen()
+{
+	String Odyteken; 
+	if (mySerial.available()) 
+	{
+		Ody::_recvOneChar();
+		Odyteken = Ody::_showNewData();
+	}
+	return Odyteken;
+}
+void Ody::_recvOneChar() 
+{
+    if (mySerial.available() > 0) 
+	{
+		_receivedChar = mySerial.read();
+		_newData = true;
+       	}
+}
+
+char Ody::_showNewData() 
+{
+	char Odyteken;
+	if (_newData == true) 
+	{
+		Odyteken = _receivedChar;
+		_newData = false;
+	}
+	return Odyteken;
+}
+

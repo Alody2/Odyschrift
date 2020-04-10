@@ -15,14 +15,15 @@ We use an Arduino Mega
 class vierOpRij
 { 
 public:
-int mDO;
-int mDE;
-int mDI;
-int mDA;
-int mRO;
-int mRE;
-int mRI;
-int mRA;
+	int mDO;
+	int mDE;
+	int mDI;
+	int mDA;
+	int mRO;
+	int mRE;
+	int mRI;
+	int mRA;
+	void action(); 
 private:
 }
 #endif
