@@ -13,9 +13,6 @@ http://www.arduino.cc/en/Tutorial/LiquidCrystalHelloWorld
  */
 #include <LiquidCrystal_I2C.h> // include the library code
 //code is in in bibliotheken geplaats. Dit om het overzicht te behouden.
-#include <Ody_lezen.h>// the library voor lezen via bluetooth
-//#include <Ody_algemeen.h> //the library for special tools 
-#include <OdyModule.h> //the library for special tools 
 // initialize the LiquidCrystal library by associating any needed LCD interface pin
 // with the arduino pin number it is connected to
 const byte lcdAddr = 0x27;  // Address of I2C backpack
@@ -24,8 +21,6 @@ const byte lcdRows = 4;     // Number of lines
 const unsigned int scrollDelay = 500;   // Miliseconds before scrolling next char
 const unsigned int demoDelay = 2000;    // Miliseconds between demo loops
 LiquidCrystal_I2C lcd (0x27, 20, 4);
-//Ody_algemeen odyAlgemeen();
-OdyModule odyMod();
 //variabelen om het lcd scherm te reguleren
 String tekst;			//catches the text to print to the lcd-screen
 byte textLen;                           // Number of visible characters in the text
@@ -37,46 +32,6 @@ int keuzestand = 0;			//zet een listener aan na de eerste loop in een keuze stan
 boolean startModus;		//waar zolang een welkomst tekst wordt getoond
 // NEVER define any of these pins to attach to the 1 (tx) pin on Arduino because it will totally screw your sketch!! And send you on an hour of debugging
 // Make sure these are corrected in the right order! Taking some time to do it properly might save you a lot of work later.
-//The pins for the joystick are:
-int dirLeft = 47; // A
-int dirRight = 49; // E
-int dirUp = 53; // O
-int dirDown = 51; //I
-
-int led_red = 12;                   //rood
-int led_green = 13;           //groen
-
-boolean Firstgroup = true;    // This Boolean is used for zooming in on the group DRMF, or the group AOEI
-String Odywoord;              // This is the Odywoord which is a composition of one or more Odytekens
-int OdyNummer;              // This is the number of the Odywoord
-String Odyteken;                    // This is the Odyteken which constructs the Odywoord as selected at first
-String OdytekenNOW;                 // This is the Odyteken which is currently selected
-int cursorOdy;		//waar op de regel start de tekst
-String strModule;		//variable to contain the name of the active application
-int intModule = 1;			//variable containing the number of a module
-Ody_lezen myOdy(9,10);
-
-//de module waarin de joystick start
-/*int odyModule = 3;
-String strActie = "dobbelsteen 1-3";*/
-/*int odyModule = 4;
-String strActie = "dobbelsteen 4-6";*/
-/*int odyModule = 5;
-String strActie = "mens_erger_je_niet";
-int odyModule = 6;
-String strActie = "ganzenbord";*/
-/*int odyModule = 7;//inclusief 8 en 9
-String strActie = "mastermind";*/
-/*int odyModule = 11;
-String strActie = "tangram";*/
-/*int odyModule = 49;
-String strActie = "instelling_1";*/
-/*int odyModule = 64;
-String strActie = "schakel";*/
-/*int odyModule = 2;			//variable containing the number of a module
-String strActie = "schrijven  ";*/
-int odyModule = 1;			//variable containing the number of a module
-String strActie = "4 op 1 ry";
 int cursorTekst = 0;	
 //uitzoeken functie/verschil 4 variabelen Jurre hieronder
 boolean laatstaan;                  //waar als de tekst niet wordt weggepoetst na de pauze
@@ -84,20 +39,6 @@ boolean afrollen;                   // waar als de tekst afgerold moet worden
 boolean FirstLetterDefined = false; // Variable distinguishing between first loop when looking for a first word, or second loop looking for second word
 //en variabelen Alle
 //int wachten;  			//als 1 neerzetten tekst in eerste loop, wordt 2 in de eerste loop. Als 3 wordt de tekst in elke loop aangepast. 
-int delayTime1 = 50; // Delay between shifts
-int delayTime2 = 250; // Delay between shifts
-//einde variabelen Alle
-int eerste_schrijf_loop = false;  			//schakelaar om te zetten in eerste loop. 
-//variabelen om de input te timen
-int holdtime = 500;          // This sets how long the user have to hold the stick in a direction before selection is confirmed
-int startholdtime;            // This is a variable needed for keeping track of selection time
-int endholdtime;              // This is a variable needed for keeping track of selection time
-int pausetime = 100;         // Sets the time sketch pauzes after confirmation of letters
-int turntime = 500;           // Wait for a moment after selecting a motor 
-int readtime = 3000;                // Sets the time the info will be on the screen for Elinde's written messages
-int count = 10;                     // Sets the time the info will be on the screen for Elinde's written messages
-int announcetime = 1000;            // Time anouncing fal chip action
-boolean wacht_op_input = false; //een pauze waarin gewacht wordt op input
 //---------------------------------------------------------------------------
 
 void setup() 
@@ -106,15 +47,6 @@ void setup()
 put your setup code here, to run once. Below, the joystick related pins are defined as 
 digital inputs (reading on or off)
 */
-	pinMode( dirUp , INPUT);
-	pinMode( dirRight , INPUT);
-	pinMode( dirDown , INPUT);
-	pinMode( dirLeft , INPUT);
-	digitalWrite(led_green, LOW);
-	digitalWrite(led_red, LOW);
-	strModule = "Vier op een rij";  //module waarmee gestart wordt 
-	intModule = 1; // het nummer van de module
- 	Serial.begin(9600);     //turning on of the serial monitor to inspect the result.
   	lcd.init();
   	lcd.backlight();
 	startModus = true;
@@ -123,80 +55,7 @@ digital inputs (reading on or off)
  	 tekst = "NU:"; cursorKolom = 0 ; cursorRij = 2;  afrollen = false; wachten = 1; laatstaan = true; lcd_print();    
  	 tekst = "Vier op een rij"; cursorKolom = 0 ; cursorRij =3; afrollen = false; wachten = 6; laatstaan = false; lcd_print();    
 	tekst = strActie; cursorKolom = 2 ; cursorRij = 3;  eerste_schrijf_loop = false; lcd_print();    
-	randomSeed(analogRead(0)); 
 }
-//---------------------------------------------------------------------------
-void loop() //brengt naar LoadBar
-{
-/*
-This is the general part of the sketch. It is ALWAYS part of the sketch because it is the central loop 
-It waits for input on diagonal, or hori-vertical choices on the joystick
-If waits for specific kind of input based on the value of "FirstLetterDefined".
-If we need to add a third letter to Odyschrift, we will need to add a third category here (with "firstletterdefined" changing to a three option INTEGER instead of a two option BOOLEAN).
-*/
-odyMod.dot ();	
-Serial.println (odyMod.intM);
-Serial.println (odyMod.intM);
-Serial.println (odyMod.intM);
-Serial.println (odyMod.intM);
-digitalWrite(led_green, LOW); //switch green LED to low
-	digitalWrite(led_red, LOW); //switch red LED to low
-	delay(100); // This tiny delay is nice to not flicker the LCD that will otherwise get a LOT of input from the final "else" statements.
-  	lcd.setCursor(0,0);
-  	if (FirstLetterDefined == false)
-	{  // in dit eerste deel wordt alleen gekeken of er een medeklinker geselecteerd is. Dit wordt gedaan als de eerste letter nog niet gekozen is.
-    		if ( digitalRead( dirUp ) == LOW && digitalRead( dirLeft ) == LOW )
-		{
-      			Odyteken = 'R';
-      		}
-    		else if ( digitalRead( dirUp ) == LOW && digitalRead( dirRight ) == LOW )
-		{
-      			Odyteken = 'D';
-     		}       
-    		else if ( digitalRead( dirDown ) == LOW && digitalRead( dirRight ) == LOW )
-		{
-      			Odyteken = 'F';
-     		}
-   		else if ( digitalRead( dirDown ) == LOW && digitalRead( dirLeft ) == LOW )
-		{
-      			Odyteken = 'M';
-      		}
-    		else 
-		{ // this else statement makes sure the user gets some instruction on the LED
-      			lcd.clear(); // clear
-      			tekst = "Kies medeklinker"; cursorKolom = 0 ; cursorRij =0;  afrollen = false; wachten = 1; laatstaan = true; lcd_print();   
-      			Serial.println ("Wachtend op medeklinker"); 
-     		}
-    	}
- 	else
-	{ // If the first group is not false, then we are already looking for the second letter,
-  		if( digitalRead( dirUp ) == LOW ) 
-		{
-      			Odyteken = 'O';
-     		}
-   		else if( digitalRead( dirRight ) == LOW )
-		{
-      			Odyteken = 'A';
-     		}
-    		else if( digitalRead( dirDown ) == LOW )
-		{
-      			Odyteken = 'I';
-     		}
-   		else if( digitalRead( dirLeft ) == LOW )
-		{
-      			Odyteken = 'E';
-      		}
-   		else 
-		{ // this else statement makes sure the user gets some instruction on the LED
-      			lcd.clear(); // clear
-      			tekst = "Kies klinker"; cursorKolom = 0 ; cursorRij = 0;  wachten = 1; laatstaan = true; lcd_print();    
-      			Serial.println ("Wachtend op klinker");
-      		}
-    	} 
-      	OdytekenNOW = Odyteken;
-      	Serial.println (Odyteken + " <-- Joystick input");
-      	LoadBar();
-  }
 //---------------------------------------------------------------------------
 void LoadBar() //brengt naar Odyletterswitch, maakt gebruik van wisselgroep en Odytekencheck
 { 
@@ -241,70 +100,6 @@ void LoadBar() //brengt naar Odyletterswitch, maakt gebruik van wisselgroep en O
    		count++;  
   	} // this bracket ends the bigger "while loop"
 } 
-//---------------------------------------------------------------------------
-void wisselgroep() //aangeroepen vanuit LoadBar
-{
-      	while ( digitalRead( dirUp ) == LOW || digitalRead( dirRight ) == LOW || digitalRead( dirDown ) == LOW || digitalRead( dirLeft ) == LOW ){
-      		delay(pausetime);
-	}
-      	if ( digitalRead( dirUp ) == HIGH && digitalRead( dirRight ) == HIGH && digitalRead( dirDown ) == HIGH && digitalRead( dirLeft ) == HIGH ){
-		if (FirstLetterDefined == false){ // This if statement checks if the logic has to go into the first or second letter selection scenario. 
-			FirstLetterDefined = true;
-		}
-		else { // Dit gaan we doen als er een letter bijkomt TWEEDE LETTER SCENARIO
-			FirstLetterDefined = false;
-		}
-	}
-}
-//---------------------------------------------------------------------------
-void Odytekencheck()//aangeroepen vanuit LoadBar
-{
-	if ( digitalRead( dirUp ) == LOW && digitalRead( dirLeft ) == LOW )
-	{
-      		OdytekenNOW = 'R';
-  		exit;
-      	}
-   	else if ( digitalRead( dirUp ) == LOW && digitalRead( dirRight ) == LOW )
-	{
-     		OdytekenNOW = 'D';
-        	exit;
-      	}   
-   	else if ( digitalRead( dirDown ) == LOW && digitalRead( dirRight ) == LOW )
-	{
-      		OdytekenNOW = 'F';
-        	exit;
-      	}
-  	else if ( digitalRead( dirDown ) == LOW && digitalRead( dirLeft ) == LOW )
-	{
-      		OdytekenNOW = 'M';
-        	exit;
-     	}
-  	else if ( digitalRead( dirUp ) == LOW ) 
-	{
-      		OdytekenNOW = 'O';
-        	exit;
-     	}
-   	else if ( digitalRead( dirRight ) == LOW ) 
-	{
-      		OdytekenNOW = 'A';
-       		exit;
-      	}
-   	else if ( digitalRead( dirDown ) == LOW )
-	{
-      		OdytekenNOW = 'I';
-        	exit;
-   	}
-   	else if( digitalRead( dirLeft ) == LOW )
-	{
-      		OdytekenNOW = 'E';
-        	exit;
-      	}
-  	else 
-	{ // als er niets geselecteerd is
-      		OdytekenNOW = ' ';
-       		exit;
-      }
-}
 //---------------------------------------------------------------------------
 void Odyletterswitch()//opvolger van LoadBar, brengt naar regeltmodule
 {
@@ -376,11 +171,11 @@ void lcd_print(){
   */            
   
   lcd.setCursor(cursorKolom, cursorRij);
-  textLen = tekst.length();
+  lengteTekst = tekst.length();
  
   if (afrollen == true){ // This part executes what needs to happen to have the "afrollen" effect
  
-      for (int i = 0; i < textLen; i++) {
+      for (int i = 0; i < lengteTekst; i++) {
         delay(70); // this sets the time it takes between letter appearing
         lcd.print(tekst.charAt(i));   // Print a message to the LCD.
       }
@@ -407,19 +202,4 @@ void schakel()
 	strActie = "schakel";
 	tekst = strActie; cursorKolom = 2 ; cursorRij = 3;  eerste_schrijf_loop = false; lcd_print();    
 	zet_voltooid();
-}
-//---------------------------------------------------------------------------
-void checkcontact(String dit)
-{ // dit is een aparte functie, It's a tool to check the contacts
- 	Serial.println ("***start check contacts laag");
-  	if (digitalRead( dirUp ) == LOW){Serial.println ("low dirUp/");}
- 	if (digitalRead( dirRight ) == LOW){Serial.println ("low dirRight/");}
-  	if (digitalRead( dirDown ) == LOW){Serial.println ("low dirDown/");}
-  	if (digitalRead( dirLeft ) == LOW){Serial.println ("low dirLeft/");}
-  	Serial.println (dit + "start check contacts hoog");
-  	if (digitalRead( dirUp ) == HIGH){Serial.println ("HIGH dirUp/");}
-  	if (digitalRead( dirRight ) == HIGH){Serial.println ("HIGH dirRight/");}
-  	if (digitalRead( dirDown ) == HIGH){Serial.println ("HIGH dirDown/");}
-  	if (digitalRead( dirLeft ) == HIGH){Serial.println ("HIGH dirLeft/");}
-  	Serial.println (dit + "eind check contacts***");
 }

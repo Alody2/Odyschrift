@@ -10,20 +10,16 @@ The joystick has 8 contacts.
 
 We use an Arduino Mega
 */
-#ifndef Morse_h
-#define Morse_h
-class vierOpRij
+#ifndef Ody_lcd_h
+#define Ody_lcd_h
+#include <Arduino.h>
+#include <LiquidCrystal_I2C.h> // include the library code
+#include <Ody_algemeen.h> //the library for special tools 
+
+class Ody_lcd
 { 
 public:
-	int mDO;
-	int mDE;
-	int mDI;
-	int mDA;
-	int mRO;
-	int mRE;
-	int mRI;
-	int mRA;
-	void action(); 
+LiquidCrystal_I2C lcd (0x27, 20, 4);
 private:
 }
 #endif
