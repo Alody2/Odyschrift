@@ -6,9 +6,7 @@ Momentary we are developing 'Vier op een rij'.
 
 200328_arduino_sketches_joystick_Joystick_v1.6 
 
-Parallel to this sketch we develop sketches for using Odyschrift also for other apps. 
-Its central file will be Odyschrift.ino. 
-Libraries will be attached to this central file.
+On the moment we refresh this sketch. We are developing the library 'OdyInput' so we can use 'Vier op een rij' easily with another Arduino than the Arduino we use now. And also to reuse the code in our next applicatione. This will be OdyLezen. 
 
 * OdyVierOprij. 
 
